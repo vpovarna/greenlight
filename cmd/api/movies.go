@@ -17,13 +17,13 @@ func (app *application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 		Genres  []string `json:"genres"`
 	}
 
-	// err := app.readJson(w, r, &input)
-	// if err != nil {
-	// 	app.errorResponse(w, r, http.StatusBadRequest, err.Error())
-	// 	return
-	// }
+	err := app.readJSON(w, r, &input)
+	if err != nil {
+		app.badRequestResponse(w, r, err)
+		return
+	}
 
-	fmt.Fprintf(w, "%+w\n", input)
+	fmt.Fprintf(w, "%+v\n", input)
 }
 
 func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request) {
