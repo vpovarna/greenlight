@@ -1,0 +1,93 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Greenlight_API",
+    "dateExported": "2024-03-05T20:48:28.395Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "114655db-8a3d-40a7-b807-374e9b781e23",
+            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "containerId": "",
+            "name": "Get Movie",
+            "url": "http://localhost:4000/v1/movies/3",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-27T09:50:47.315Z",
+            "modified": "2024-03-05T20:44:57.770Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "329b20bd-3510-484c-9186-dd59203adc8b",
+            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "containerId": "",
+            "name": "Delete Movie",
+            "url": "http://localhost:4000/v1/movies/3",
+            "method": "DELETE",
+            "sortNum": 12500,
+            "created": "2024-03-05T20:44:27.141Z",
+            "modified": "2024-03-05T20:44:45.957Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "338159b5-919a-4c96-9871-6beafa7c737c",
+            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "containerId": "",
+            "name": "Update Movie",
+            "url": "http://localhost:4000/v1/movies/2",
+            "method": "PUT",
+            "sortNum": 15000,
+            "created": "2024-03-05T12:32:50.136Z",
+            "modified": "2024-03-05T12:34:37.052Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Black Panther\",\n  \"year\": 2018,\n  \"runtime\": \"134 mins\",\n  \"genres\": [\n    \"sci-fi\",\n    \"action\",\n    \"adventure\",\n    \"drama\"\n  ]\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "3a51c0a0-85b6-4942-9a41-88adcb4cbc19",
+            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "containerId": "",
+            "name": "Create Movie",
+            "url": "http://localhost:4000/v1/movies",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-27T09:52:12.072Z",
+            "modified": "2024-03-04T15:12:32.552Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"The Breakfast Club\",\n  \"year\": 1986,\n  \"runtime\": \"96 mins\",\n  \"genres\": [\n    \"drama\"\n  ]\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "9b6e491a-8330-450c-88b8-526b371dfd70",
+            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "containerId": "",
+            "name": "HealthCheck",
+            "url": "http://localhost:4000/v1/healthcheck",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-27T11:18:05.906Z",
+            "modified": "2024-02-27T11:18:05.906Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
