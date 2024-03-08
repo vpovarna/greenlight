@@ -35,3 +35,9 @@ Testing optimistic locking
 ```
 $ xargs -I % -P8 curl -X PATCH -d '{"runtime": "97 mins"}' "localhost:4000/v1/movies/1" < <(printf '%s\n' {1..8})
 ```
+
+
+Measure the response time
+```
+curl -w '\nTime: %{time_total}s \n' localhost:4000/v1/movies/1
+```
