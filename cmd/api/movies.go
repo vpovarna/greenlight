@@ -90,8 +90,8 @@ func (app *application) updateMovieHandler(w http.ResponseWriter, r *http.Reques
 	movie, err := app.models.Movie.Get(id)
 	if err != nil {
 		switch {
-		case errors.Is(err, data.ErrRecordNotFound):
-			app.notFoundResponse(w, r)
+		case errors.Is(err, data.ErrEditConflict):
+			app.editConflictResponse(w, r)
 		default:
 			app.serverErrorResponse(w, r, err)
 		}

@@ -27,4 +27,11 @@ postgres=# SELECT current_user;
 postgres=# CREATE DATABASE greenlight
 postgres=# CREATE ROLE greenlight WITH LOGIN PASSWORD '<password>';
 postgres=# CREATE EXTENSION IF NOT EXISTS citext;
+postgres=# grant all privileges on database greenlight to greenlight;
+postgres=# alter database greenlight owner to greenlight;
+```
+
+Testing optimistic locking
+```
+$ xargs -I % -P8 curl -X PATCH -d '{"runtime": "97 mins"}' "localhost:4000/v1/movies/1" < <(printf '%s\n' {1..8})
 ```
