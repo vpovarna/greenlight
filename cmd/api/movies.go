@@ -201,6 +201,6 @@ func (app *application) listMoviesHandler(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	fmt.Fprintf(w, "+v\n", input)
+	fmt.Fprintf(w, "%+v\n", input)
 
 }

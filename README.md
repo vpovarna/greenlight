@@ -24,7 +24,7 @@ root@aebae6d87e96:/# psql -U postgres -h localhost
 
 ```
 postgres=# SELECT current_user;
-postgres=# CREATE DATABASE greenlight
+postgres=# CREATE DATABASE greenlight;
 postgres=# CREATE ROLE greenlight WITH LOGIN PASSWORD '<password>';
 postgres=# CREATE EXTENSION IF NOT EXISTS citext;
 postgres=# grant all privileges on database greenlight to greenlight;
