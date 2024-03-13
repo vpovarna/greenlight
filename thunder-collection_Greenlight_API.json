@@ -1,50 +1,95 @@
 {
     "client": "Thunder Client",
     "collectionName": "Greenlight_API",
-    "dateExported": "2024-03-05T20:48:28.395Z",
+    "dateExported": "2024-03-13T17:01:51.575Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "114655db-8a3d-40a7-b807-374e9b781e23",
-            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "_id": "c3ead560-5a99-45dd-b9c5-6ebc729563c2",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
             "containerId": "",
             "name": "Get Movie",
             "url": "http://localhost:4000/v1/movies/3",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-02-27T09:50:47.315Z",
-            "modified": "2024-03-05T20:44:57.770Z",
+            "created": "2024-03-13T15:41:51.517Z",
+            "modified": "2024-03-13T15:41:51.517Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cff9b4ec-013c-4a51-b324-c4bedb0d487d",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
+            "containerId": "",
+            "name": "Get Movies",
+            "url": "localhost:4000/v1/movies?genres=adventure",
+            "method": "GET",
+            "sortNum": 11250,
+            "created": "2024-03-13T15:44:59.663Z",
+            "modified": "2024-03-13T16:58:32.645Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "genres",
+                    "value": "adventure",
+                    "isPath": false
+                }
+            ],
             "reqType": "get",
             "tests": []
         },
         {
-            "_id": "329b20bd-3510-484c-9186-dd59203adc8b",
-            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "_id": "72ff84eb-c002-42b0-bc4b-d1f567f4db12",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
+            "containerId": "",
+            "name": "Get Movies Filtered",
+            "url": "localhost:4000/v1/movies?title=mona&genres=animation,adventure",
+            "method": "GET",
+            "sortNum": 11875,
+            "created": "2024-03-13T16:58:45.696Z",
+            "modified": "2024-03-13T17:00:47.075Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "title",
+                    "value": "mona",
+                    "isPath": false
+                },
+                {
+                    "name": "genres",
+                    "value": "animation,adventure",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "5c985fca-0c4c-4a0c-9fc0-593d35adc125",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
             "containerId": "",
             "name": "Delete Movie",
             "url": "http://localhost:4000/v1/movies/3",
             "method": "DELETE",
             "sortNum": 12500,
-            "created": "2024-03-05T20:44:27.141Z",
-            "modified": "2024-03-05T20:44:45.957Z",
+            "created": "2024-03-13T15:41:51.521Z",
+            "modified": "2024-03-13T15:41:51.521Z",
             "headers": [],
             "params": [],
-            "reqType": "get",
             "tests": []
         },
         {
-            "_id": "338159b5-919a-4c96-9871-6beafa7c737c",
-            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "_id": "807a6643-f7b6-46e6-8a8f-221d84fe259d",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
             "containerId": "",
             "name": "Update Movie",
             "url": "http://localhost:4000/v1/movies/2",
             "method": "PUT",
             "sortNum": 15000,
-            "created": "2024-03-05T12:32:50.136Z",
-            "modified": "2024-03-05T12:34:37.052Z",
+            "created": "2024-03-13T15:41:51.520Z",
+            "modified": "2024-03-13T15:41:51.520Z",
             "headers": [],
             "params": [],
             "body": {
@@ -52,39 +97,38 @@
                 "raw": "{\n  \"title\": \"Black Panther\",\n  \"year\": 2018,\n  \"runtime\": \"134 mins\",\n  \"genres\": [\n    \"sci-fi\",\n    \"action\",\n    \"adventure\",\n    \"drama\"\n  ]\n}",
                 "form": []
             },
-            "reqType": "get",
             "tests": []
         },
         {
-            "_id": "3a51c0a0-85b6-4942-9a41-88adcb4cbc19",
-            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "_id": "1101d05a-8abf-4134-8e04-c994ec27fb24",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
             "containerId": "",
             "name": "Create Movie",
             "url": "http://localhost:4000/v1/movies",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-02-27T09:52:12.072Z",
-            "modified": "2024-03-04T15:12:32.552Z",
+            "created": "2024-03-13T15:41:51.518Z",
+            "modified": "2024-03-13T15:44:50.301Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"title\": \"The Breakfast Club\",\n  \"year\": 1986,\n  \"runtime\": \"96 mins\",\n  \"genres\": [\n    \"drama\"\n  ]\n}",
+                "raw": "{\n  \"title\": \"The Breakfast Club\",\n  \"year\": 1985,\n  \"runtime\": \"97 mins\",\n  \"genres\": [\n    \"comedy\"\n  ]\n}",
                 "form": []
             },
             "reqType": "post",
             "tests": []
         },
         {
-            "_id": "9b6e491a-8330-450c-88b8-526b371dfd70",
-            "colId": "d695f497-d4db-4b71-9db6-2b348c43841a",
+            "_id": "0f3def6e-5022-40cd-9fd1-5062cdb562ef",
+            "colId": "32c4c866-be51-41c1-ace0-fb32522e758f",
             "containerId": "",
             "name": "HealthCheck",
             "url": "http://localhost:4000/v1/healthcheck",
             "method": "GET",
             "sortNum": 30000,
-            "created": "2024-02-27T11:18:05.906Z",
-            "modified": "2024-02-27T11:18:05.906Z",
+            "created": "2024-03-13T15:41:51.519Z",
+            "modified": "2024-03-13T15:41:51.519Z",
             "headers": [],
             "params": [],
             "tests": []
