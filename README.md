@@ -45,6 +45,12 @@ $ export GREENLIGHT_DB_DSN='postgres://greenlight:<password>@localhost/greenligh
 $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
 ```
 
+Create migration files
+```
+$ migrate create -seq -ext .sql -dir ./migrations add_movies_indexes
+```
+
+
 Testing commands
 ====================================================
 Testing optimistic locking
