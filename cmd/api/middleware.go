@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"net"
 	"net/http"
+	"sync"
+	"time"
 
 	"golang.org/x/time/rate"
 )
@@ -22,14 +25,57 @@ func (app *application) recoverPanic(next http.Handler) http.Handler {
 }
 
 func (app *application) rateLimit(next http.Handler) http.Handler {
-	limiter := rate.NewLimiter(2, 4)
+
+	type client struct {
+		limiter  *rate.Limiter
+		lastSeen time.Time
+	}
+
+	var mutex sync.Mutex
+	var clients = make(map[string]*client)
+
+	// launch a background goroutine which remove old entries from the clients map once every minute
+	go func() {
+		for {
+			time.Sleep(1 * time.Minute)
+
+			mutex.Lock()
+
+			for ip, client := range clients {
+				if time.Since(client.lastSeen) > 3*time.Minute {
+					delete(clients, ip)
+				}
+			}
+
+			mutex.Unlock()
+		}
+	}()
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Extract the client IP address from the request
+		ip, _, err := net.SplitHostPort(r.RemoteAddr)
+		if err != nil {
+			app.serverErrorResponse(w, r, err)
+			return
+		}
 
-		if !limiter.Allow() {
+		mutex.Lock()
+
+		// Check if the ip is in the map and if it's not create a new limiter with the default values
+		if _, found := clients[ip]; !found {
+			clients[ip] = &client{
+				limiter:  rate.NewLimiter(2, 4),
+				lastSeen: time.Now(),
+			}
+		}
+
+		if !clients[ip].limiter.Allow() {
+			mutex.Unlock()
 			app.rateLimitExceededResponse(w, r)
 			return
 		}
+
+		mutex.Unlock()
 
 		next.ServeHTTP(w, r)
 	})
