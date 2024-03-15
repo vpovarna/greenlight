@@ -52,30 +52,33 @@ func (app *application) rateLimit(next http.Handler) http.Handler {
 	}()
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Extract the client IP address from the request
-		ip, _, err := net.SplitHostPort(r.RemoteAddr)
-		if err != nil {
-			app.serverErrorResponse(w, r, err)
-			return
-		}
-
-		mutex.Lock()
-
-		// Check if the ip is in the map and if it's not create a new limiter with the default values
-		if _, found := clients[ip]; !found {
-			clients[ip] = &client{
-				limiter:  rate.NewLimiter(2, 4),
-				lastSeen: time.Now(),
+		// Only carry out the check if rate limiting is enabled
+		if app.config.limiter.enable {
+			// Extract the client IP address from the request
+			ip, _, err := net.SplitHostPort(r.RemoteAddr)
+			if err != nil {
+				app.serverErrorResponse(w, r, err)
+				return
 			}
-		}
 
-		if !clients[ip].limiter.Allow() {
+			mutex.Lock()
+
+			// Check if the ip is in the map and if it's not create a new limiter with the default values
+			if _, found := clients[ip]; !found {
+				clients[ip] = &client{
+					limiter:  rate.NewLimiter(rate.Limit(app.config.limiter.rps), app.config.limiter.burst),
+					lastSeen: time.Now(),
+				}
+			}
+
+			if !clients[ip].limiter.Allow() {
+				mutex.Unlock()
+				app.rateLimitExceededResponse(w, r)
+				return
+			}
+
 			mutex.Unlock()
-			app.rateLimitExceededResponse(w, r)
-			return
 		}
-
-		mutex.Unlock()
 
 		next.ServeHTTP(w, r)
 	})
