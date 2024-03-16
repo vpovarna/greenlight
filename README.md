@@ -4,10 +4,12 @@ Greenlight API
 APIs
 ====================================================
 GET    /v1/healthcheck -> Show application information
+GET    /v1/movies      -> Show details of all movies
 POST   /v1/movies      -> Create movie
 GET    /v1/movies/:id  -> Get movie by id
 PUT    /v1/movies/:id  -> Update movie
 DELETE /v1/movies/:id  -> Delete movie
+POST   /v1/users       -> Register a new user
 
 Running the application locally
 ====================================================
