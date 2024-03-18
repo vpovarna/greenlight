@@ -65,8 +65,8 @@ func main() {
 	flag.BoolVar(&cfg.limiter.enable, "limiter-enabled", true, "Enable rate limiter")
 
 	// SMTP config flags
-	flag.StringVar(&cfg.smtp.host, "smtp-host", "sandbox.smtp.mailtrap.io", "SMTP host")
-	flag.IntVar(&cfg.smtp.port, "smtp-port", 25, "SMTP port")
+	flag.StringVar(&cfg.smtp.host, "smtp-host", "smtp.mailtrap.io", "SMTP host")
+	flag.IntVar(&cfg.smtp.port, "smtp-port", 2525, "SMTP port")
 	flag.StringVar(&cfg.smtp.username, "smtp-username", "546d308d375d2b", "SMTP username")
 	flag.StringVar(&cfg.smtp.password, "smtp-password", "f2ae2a8488d1fd", "SMTP password")
 	flag.StringVar(&cfg.smtp.sender, "smtp-sender", "Greenlight <no-reply@greenlight.example.com>", "SMTP sender")
