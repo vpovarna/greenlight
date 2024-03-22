@@ -3,15 +3,15 @@ Greenlight API
 
 APIs
 ====================================================
-GET    /v1/healthcheck           -> Show application information
-GET    /v1/movies                -> Show details of all movies
-POST   /v1/movies                -> Create movie
-GET    /v1/movies/:id            -> Get movie by id
-PATH   /v1/movies/:id            -> Update movie
-DELETE /v1/movies/:id            -> Delete movie
-POST   /v1/users                 -> Register a new user
-PUT    /v1/users/activated       -> Activate a specific user
-POST   /v1/tokens/authentication -> Generate a new authentication token
+GET    /v1/healthcheck           -> Show application information         ||       - 
+GET    /v1/movies                -> Show details of all movies           ||  movies:read
+POST   /v1/movies                -> Create movie                         ||  movies:write
+GET    /v1/movies/:id            -> Get movie by id                      ||  movies:read
+PATH   /v1/movies/:id            -> Update movie                         ||  movies:write
+DELETE /v1/movies/:id            -> Delete movie                         ||  movies:write
+POST   /v1/users                 -> Register a new user                  ||        -
+PUT    /v1/users/activated       -> Activate a specific user             ||        -
+POST   /v1/tokens/authentication -> Generate a new authentication token  ||        -
 
 Running the application locally
 ====================================================
