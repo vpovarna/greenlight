@@ -202,6 +202,8 @@ func (app *application) requireAuthenticatedUser(next http.HandlerFunc) http.Han
 func (app *application) enableCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Access-Control-Alow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Authorization, *")
 		next.ServeHTTP(w, r)
 	})
 }
